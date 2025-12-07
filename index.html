@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Sunrise Global School | Jodhpur's Premier International Institution</title>
+    <meta name="description" content="Admissions Open 2026-27. Sunrise Global School Jodhpur blends academic rigour with emotional intelligence on a 10-acre secure campus. Led by experts in Education & Psychology.">
+    <meta name="keywords" content="Best School Jodhpur, Top International School Rajasthan, Sunrise Global School, Boarding School Jodhpur, Admissions 2026">
+    <meta name="author" content="Sunrise Global School">
+    <meta name="theme-color" content="#AE1C40">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: 'rgba(174, 28, 64, 1)', // Crimson
+                            dark: '#8a1632',
+                            light: 'rgba(174, 28, 64, 0.04)',
+                        },
+                        gold: {
+                            DEFAULT: '#D4AF37', // Button Gold
+                            text: '#8a6d1c',   // Readable Gold Text
+                            light: '#fcfbf5',
+                        },
+                        slate: {
+                            850: '#1e293b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0,0,0,0.1)',
+                        'glow': '0 0 20px rgba(212, 175, 55, 0.4)',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        /* TYPOGRAPHY REFINEMENTS */
+        body { 
+            font-family: 'Merriweather', serif; 
+            -webkit-font-smoothing: antialiased; 
+            line-height: 1.9; /* Premium Readability */
+        }
+        h1, h2, h3, h4, h5, h6, .btn, .nav-link, .font-sans { 
+            font-family: 'Montserrat', sans-serif; 
+            letter-spacing: -0.02em; 
+        }
+        
+        /* CAROUSEL LOGIC */
+        .carousel-container { position: relative; overflow: hidden; height: 100%; }
+        .carousel-slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            opacity: 0; transition: opacity 1.5s ease-in-out, transform 6s ease;
+            transform: scale(1);
+            z-index: 0;
+        }
+        .carousel-slide.active { opacity: 1; transform: scale(1.05); z-index: 1; }
+        
+        .carousel-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to right, rgba(20, 10, 15, 0.85) 0%, rgba(30, 41, 59, 0.6) 100%);
+            z-index: 2;
+        }
+
+        /* MICRO INTERACTIONS */
+        input, select { transition: all 0.3s ease; }
+        input:focus, select:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+            outline: none;
+        }
+
+        /* DOTS */
+        .carousel-dots {
+            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 12px; z-index: 20;
+        }
+        .dot {
+            width: 10px; height: 10px; background-color: rgba(255,255,255,0.4);
+            border-radius: 50%; cursor: pointer; transition: all 0.3s;
+        }
+        .dot.active { background-color: #D4AF37; width: 30px; border-radius: 5px; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-700 flex flex-col min-h-screen">
+
+    <div class="bg-brand text-white text-xs py-2.5 hidden md:block border-b border-brand-dark relative z-50 font-sans">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="space-x-8 flex items-center opacity-90 font-medium tracking-wide">
+                <span><i class="fas fa-phone-alt text-gold mr-2"></i>949-251-1100</span>
+                <a href="mailto:prakashinda@gmail.com" class="hover:text-gold transition">
+                    <i class="fas fa-envelope text-gold mr-2"></i>prakashinda@gmail.com
+                </a>
+            </div>
+            <div class="space-x-6 font-bold uppercase tracking-widest flex items-center text-[11px]">
+                <a href="#" onclick="alert('Student Portal opening soon!')" class="hover:text-gold transition">ERP Login</a>
+                <button onclick="handlePayment()" class="bg-gold text-brand-dark px-5 py-1.5 rounded shadow-sm hover:bg-white transition flex items-center">
+                    <i class="fas fa-bolt mr-2"></i> Pay Fees
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="bg-brand text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-2xl shadow-md group-hover:scale-105 transition font-serif">S</div>
+                <div class="flex flex-col">
+                    <span class="text-2xl font-extrabold text-brand tracking-tighter leading-none font-sans">SUNRISE</span>
+                    <span class="text-[10px] font-bold text-slate-400 tracking-[0.25em] uppercase mt-1 font-sans">Global School</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-10 font-semibold text-xs uppercase tracking-widest text-slate-600 font-sans">
+                <a href="#home" class="hover:text-brand transition">Home</a>
+                <a href="#about" class="hover:text-brand transition">Vision</a>
+                <a href="#academics" class="hover:text-brand transition">Academics</a>
+                <a href="#boarding" class="hover:text-brand transition">Boarding</a>
+                <a href="#admissions" class="hover:text-brand transition">Admissions</a>
+                <a href="#contact" class="bg-brand text-white px-8 py-3 rounded-full hover:bg-brand-dark hover:-translate-y-0.5 transition shadow-glow">Enquire</a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-brand focus:outline-none p-2">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl z-50">
+            <div class="flex flex-col p-6 space-y-4 font-bold text-slate-700 font-sans">
+                <a href="#home" class="block hover:text-brand">Home</a>
+                <a href="#about" class="block hover:text-brand">Vision</a>
+                <a href="#academics" class="block hover:text-brand">Academics</a>
+                <a href="#boarding" class="block hover:text-brand">Boarding</a>
+                <a href="#admissions" class="block hover:text-brand">Admissions</a>
+                <a href="javascript:void(0)" onclick="handlePayment()" class="block text-center bg-green-50 text-green-700 py-3 rounded-lg border border-green-200">
+                    Pay Fees (UPI)
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="relative h-[800px] overflow-hidden flex items-center">
+        
+        <div id="carousel-container" class="absolute inset-0 w-full h-full">
+            <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1512632500713-3e0297306ee9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+            
+            <div class="carousel-overlay"></div>
+        </div>
+
+        <div class="carousel-dots">
+            <div class="dot active" onclick="goToSlide(0)"></div>
+            <div class="dot" onclick="goToSlide(1)"></div>
+            <div class="dot" onclick="goToSlide(2)"></div>
+            <div class="dot" onclick="goToSlide(3)"></div>
+            <div class="dot" onclick="goToSlide(4)"></div>
+            <div class="dot" onclick="goToSlide(5)"></div>
+        </div>
+
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center h-full relative z-10">
+            
+            <div class="text-white space-y-8 pt-10 md:pt-0 text-center md:text-left animate-fade-in">
+                
+                <div class="inline-block bg-gold text-brand-dark text-lg md:text-xl font-black px-8 py-3 rounded-full uppercase tracking-widest shadow-glow animate-pulse border-4 border-white/10 font-sans transform -rotate-1">
+                    Admissions Open 2026-27
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.1] tracking-tight drop-shadow-2xl mt-4 font-sans">
+                    Heritage of Values. <br>
+                    <span class="text-gold">Future of Innovation.</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-100 font-light max-w-lg mx-auto md:mx-0 leading-relaxed drop-shadow-md">
+                    Jodhpur's premier 10-acre sanctuary. Blending academic rigour with emotional intelligence to forge the ethical leaders of tomorrow.
+                </p>
+                
+                <div class="flex flex-col md:flex-row gap-5 justify-center md:justify-start pt-4 font-sans">
+                    <a href="#about" class="px-8 py-4 rounded-full font-bold border-2 border-white/50 hover:bg-white hover:text-brand transition text-center backdrop-blur-md text-sm uppercase tracking-wider">
+                        Explore Campus
+                    </a>
+                    <a href="#admissions" class="px-8 py-4 rounded-full font-bold bg-gold text-brand-dark shadow-xl hover:bg-white hover:text-brand transition text-center text-sm uppercase tracking-wider">
+                        Apply Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex justify-center md:justify-end animate-fade-in" style="animation-delay: 0.3s;">
+                <div class="bg-white p-8 md:p-10 rounded-3xl shadow-2xl max-w-md w-full border-t-[8px] border-brand relative overflow-hidden">
+                    <div class="absolute top-0 right-0 -mt-6 -mr-6 w-24 h-24 bg-gold/20 rounded-full blur-3xl"></div>
+                    
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2 font-sans">Begin Your Journey</h3>
+                    <p class="text-sm text-slate-500 mb-6 font-sans">Schedule a personal tour with our academic counselors.</p>
+                    
+                    <form action="https://formsubmit.co/prakashinda@gmail.com" method="POST" class="space-y-5 font-sans">
+                        <input type="hidden" name="_subject" value="Premium Lead: Sunrise Global Website">
+                        <input type="hidden" name="_next" value=""> <input type="hidden" name="_captcha" value="false">
+                        
+                        <div>
+                            <label class="text-[11px] font-extrabold text-slate-400 uppercase tracking-widest mb-1.5 block">Parent's Name</label>
+                            <input type="text" name="Parent_Name" class="w-full border border-gray-200 bg-gray-50 p-3.5 rounded-xl text-slate-800 focus:bg-white focus:border-brand font-bold transition" placeholder=" Name" required>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-[11px] font-extrabold text-slate-400 uppercase tracking-widest mb-1.5 block">Mobile</label>
+                                <input type="tel" name="Mobile" class="w-full border border-gray-200 bg-gray-50 p-3.5 rounded-xl text-slate-800 focus:bg-white focus:border-brand font-bold transition" placeholder="9876..." required>
+                            </div>
+                            <div>
+                                <label class="text-[11px] font-extrabold text-slate-400 uppercase tracking-widest mb-1.5 block">Grade</label>
+                                <select name="Grade" class="w-full border border-gray-200 bg-gray-50 p-3.5 rounded-xl text-slate-800 focus:bg-white focus:border-brand font-bold transition">
+                                    <option>Nursery</option>
+                                    <option>KG - Grade 5</option>
+                                    <option>Grade 6 - 10</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="text-[11px] font-extrabold text-slate-400 uppercase tracking-widest mb-1.5 block">Email</label>
+                            <input type="email" name="Email" class="w-full border border-gray-200 bg-gray-50 p-3.5 rounded-xl text-slate-800 focus:bg-white focus:border-brand font-bold transition" placeholder="name@email.com">
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-brand text-white font-extrabold py-4 rounded-xl hover:bg-brand-dark transition shadow-lg mt-2 text-sm uppercase tracking-widest hover:scale-105 transform duration-200">
+                            Request Callback
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="bg-gray-100 border-b border-gray-200 text-brand py-3 overflow-hidden">
+        <div class="container mx-auto px-6 flex items-center gap-4">
+            <span class="font-bold bg-brand text-white text-[10px] px-3 py-1 rounded-full uppercase shrink-0 tracking-wider shadow-sm font-sans">Latest Updates</span>
+            <marquee behavior="scroll" direction="left" class="font-medium text-sm text-slate-600 font-sans">
+                <span class="font-bold text-brand">★</span> Admissions Open for Founding Batch 2026-27 <span class="mx-6 text-gray-300">|</span> <span class="font-bold text-brand">★</span> 'Scholar's Shield' Scholarship for first 50 enrolments <span class="mx-6 text-gray-300">|</span> <span class="font-bold text-brand">★</span> Inaugurating Jodhpur's Advanced AI & Robotics Hub
+            </marquee>
+        </div>
+    </div>
+
+    <section id="about" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h4 class="text-gold-text font-bold uppercase tracking-widest text-xs mb-3 font-sans">Our Core Philosophy</h4>
+                <h2 class="text-4xl font-bold text-slate-900 mb-6 font-sans">Rooted in Values, Rising with Vision.</h2>
+                <div class="w-20 h-1.5 bg-brand mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-24">
+                <div class="bg-brand-light p-10 rounded-3xl border border-brand/10 hover:shadow-soft transition duration-300 group">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand text-2xl shadow-sm mb-6 group-hover:scale-110 transition"><i class="fas fa-eye"></i></div>
+                    <h3 class="text-2xl font-bold text-brand mb-4 font-sans">Our Vision</h3>
+                    <p class="text-slate-600 leading-loose text-lg font-light">To nurture a generation of ethical leaders who command <strong class="text-brand">Global Competence</strong> and technology, yet remain grounded in humility and emotional resilience.</p>
+                </div>
+                <div class="bg-gold-light p-10 rounded-3xl border border-gold/20 hover:shadow-soft transition duration-300 group">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-gold-text text-2xl shadow-sm mb-6 group-hover:scale-110 transition"><i class="fas fa-bullseye"></i></div>
+                    <h3 class="text-2xl font-bold text-gold-text mb-4 font-sans">Our Mission</h3>
+                    <p class="text-slate-600 leading-loose text-lg font-light">To provide a sanctuary of learning that ensures <strong class="text-gold-text">Academic Distinction</strong>, fosters critical thinking, and prioritizes the holistic wellness of every child through 24/7 care.</p>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-5 relative group">
+                    <div class="absolute inset-0 bg-brand rounded-2xl rotate-3 opacity-10 group-hover:rotate-6 transition duration-500"></div>
+                    <img src="./pkinda1.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Principal" class="relative rounded-2xl shadow-2xl w-full object-cover h-[520px]" loading="lazy">
+                </div>
+                
+                <div class="md:col-span-7 prose prose-lg text-slate-600">
+                    <h3 class="text-3xl font-bold text-slate-900 mb-6 font-sans">A Promise from the Principal</h3>
+                    
+                    <p class="text-gold-text font-serif italic text-xl mb-8 border-l-4 border-gold pl-4">
+                        "The goal of true education is intelligence plus character."
+                    </p>
+                    
+                    <p class="mb-6 leading-loose font-light">
+                        Welcome to Sunrise Global School. As a parent, you seek more than just grades; you seek assurance. Assurance that your child will be safe, understood, and prepared for a future we cannot yet fully imagine.
+                    </p>
+                    <p class="mb-6 leading-loose font-light">
+                        With my background in <span class="text-brand font-bold">Psychology and Education</span>, I believe that a child’s emotional stability is the engine of their academic success. At Sunrise, we do not just teach subjects; we teach students.
+                    </p>
+                    <p class="mb-8 leading-loose font-light">
+                        We blend the rigour of <strong class="text-slate-900">Critical Thinking & Innovation</strong> with the warmth of a supportive family. Supported by our <strong class="text-brand">24/7 Nursing Officer</strong> and expert mentors, your child is in the safest hands in Jodhpur.
+                    </p>
+                    
+                    <div class="flex items-center gap-5 pt-6 border-t border-gray-100">
+                        <div class="w-12 h-12 bg-brand text-white rounded-full flex items-center justify-center font-serif font-bold text-xl shadow-md">P</div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-lg font-serif">Prakash Kanwar Inda</p>
+                            <p class="text-xs text-brand font-bold uppercase tracking-widest font-sans">Principal | M.A. (English, Education, Psychology)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h4 class="text-gold-text font-bold uppercase tracking-widest text-xs mb-3 font-sans">The Sunrise Advantage</h4>
+                <h2 class="text-3xl font-bold text-slate-900 font-sans">Why We Are Different</h2>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-2xl hover:shadow-xl hover:-translate-y-2 transition duration-500 border-b-4 border-brand group">
+                    <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-brand text-2xl mb-6 group-hover:bg-brand group-hover:text-white transition"><i class="fas fa-brain"></i></div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 font-sans">Future Readiness</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed font-light">Integrating Financial Literacy, AI, and Public Speaking into the daily curriculum.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl hover:shadow-xl hover:-translate-y-2 transition duration-500 border-b-4 border-gold group">
+                    <div class="w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center text-gold-text text-2xl mb-6 group-hover:bg-gold group-hover:text-white transition"><i class="fas fa-globe"></i></div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 font-sans">Global Outlook</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed font-light">Deeply rooted in Indian culture, yet providing the wings of international perspective.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl hover:shadow-xl hover:-translate-y-2 transition duration-500 border-b-4 border-brand group">
+                    <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-brand text-2xl mb-6 group-hover:bg-brand group-hover:text-white transition"><i class="fas fa-heart-pulse"></i></div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 font-sans">Emotional Wellness</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed font-light">A psychological safety net fostering confidence and resilience against stress.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl hover:shadow-xl hover:-translate-y-2 transition duration-500 border-b-4 border-gold group">
+                    <div class="w-16 h-16 bg-yellow-50 rounded-2xl flex items-center justify-center text-gold-text text-2xl mb-6 group-hover:bg-gold group-hover:text-white transition"><i class="fas fa-shield-halved"></i></div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 font-sans">Secure Sanctuary</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed font-light">10-acre gated campus, GPS-enabled transport, and 24/7 medical staff.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-brand text-white py-20 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center divide-x divide-white/10">
+                <div class="p-2"><div class="text-5xl font-extrabold text-gold mb-2 font-sans">15+</div><div class="text-xs uppercase tracking-widest opacity-80 font-bold font-sans">Years of Leadership</div></div>
+                <div class="p-2"><div class="text-5xl font-extrabold text-gold mb-2 font-sans">10</div><div class="text-xs uppercase tracking-widest opacity-80 font-bold font-sans">Acres of Campus</div></div>
+                <div class="p-2"><div class="text-5xl font-extrabold text-gold mb-2 font-sans">1:20</div><div class="text-xs uppercase tracking-widest opacity-80 font-bold font-sans">Teacher Ratio</div></div>
+                <div class="p-2"><div class="text-5xl font-extrabold text-gold mb-2 font-sans">100%</div><div class="text-xs uppercase tracking-widest opacity-80 font-bold font-sans">Safe Environment</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="academics" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h4 class="text-gold-text font-bold uppercase tracking-widest text-xs mb-3 font-sans">Scholastic Structure</h4>
+                <h2 class="text-3xl font-bold text-slate-900 font-sans">Curriculum for Life</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="bg-white border border-gray-100 p-10 rounded-2xl hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-brand"></div>
+                    <div class="mb-6"><span class="bg-red-50 text-brand px-3 py-1 rounded text-xs font-bold uppercase font-sans">Foundation</span></div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4 font-sans">Pre-Primary</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6 text-sm">A home away from home. We focus on phonics, motor skills, and social interaction through the joy of play.</p>
+                    <ul class="text-sm text-slate-500 space-y-3 font-medium font-sans">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i>Play-Way Methodology</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i>No Bag Policy</li>
+                    </ul>
+                </div>
+                <div class="bg-white border border-gray-100 p-10 rounded-2xl hover:shadow-xl transition-all duration-300 relative overflow-hidden transform md:-translate-y-4 shadow-lg">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-gold"></div>
+                    <div class="mb-6"><span class="bg-yellow-50 text-gold-text px-3 py-1 rounded text-xs font-bold uppercase font-sans">Growth</span></div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4 font-sans">Primary & Middle</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6 text-sm">Experiential learning. Students move from rote memorization to "Why & How" through Science labs and debate.</p>
+                    <ul class="text-sm text-slate-500 space-y-3 font-medium font-sans">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i>STEM & Robotics</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i>Language Fluency</li>
+                    </ul>
+                </div>
+                <div class="bg-white border border-gray-100 p-10 rounded-2xl hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-brand"></div>
+                    <div class="mb-6"><span class="bg-red-50 text-brand px-3 py-1 rounded text-xs font-bold uppercase font-sans">Career</span></div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4 font-sans">Senior School</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6 text-sm">Career focused. Rigorous preparation for Board Exams and competitive entrance tests (IIT/NEET foundation).</p>
+                    <ul class="text-sm text-slate-500 space-y-3 font-medium font-sans">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i>Career Counseling</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i>Entrance Exam Prep</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="boarding" class="py-24 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="order-2 md:order-1">
+                    <h4 class="text-gold-text font-bold uppercase tracking-widest text-xs mb-3 font-sans">Residential Life</h4>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-8 font-sans">Comfort, Care & Community</h2>
+                    <div class="space-y-8">
+                        <div class="flex gap-5">
+                            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-brand shadow-sm shrink-0 text-xl"><i class="fas fa-bed"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg font-sans">Modern Dormitories</h4>
+                                <p class="text-slate-500 leading-relaxed text-sm">Air-cooled, spacious rooms with individual storage and study spaces.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5">
+                            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-brand shadow-sm shrink-0 text-xl"><i class="fas fa-utensils"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg font-sans">Pure Veg Nutrition</h4>
+                                <p class="text-slate-500 leading-relaxed text-sm">Wholesome, balanced meals prepared in a 100% hygienic kitchen.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5">
+                            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-brand shadow-sm shrink-0 text-xl"><i class="fas fa-user-nurse"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg font-sans">24/7 Medical Care</h4>
+                                <p class="text-slate-500 leading-relaxed text-sm">Full-time Nursing Officer and wardens on campus ensuring health and safety.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center mt-10 text-brand font-bold border-b-2 border-brand pb-1 hover:text-gold hover:border-gold transition font-sans text-sm tracking-wide">
+                        View Hostel Fees <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gold/20 rounded-3xl -z-10 transform rotate-2"></div>
+                        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Hostel Facilities" class="rounded-2xl shadow-2xl w-full" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="admissions" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h4 class="text-gold-text font-bold uppercase tracking-widest text-xs mb-3 font-sans">Join The Family</h4>
+                <h2 class="text-3xl font-bold text-slate-900 font-sans">Simple Admission Process</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8 relative">
+                <div class="hidden md:block absolute top-10 left-0 w-full h-0.5 bg-gray-100 -z-10"></div>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm text-center hover:shadow-md transition">
+                    <div class="w-20 h-20 bg-brand text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-6 border-8 border-white shadow-lg font-sans">1</div>
+                    <h4 class="font-bold text-slate-800 text-lg font-sans">Enquiry</h4>
+                    <p class="text-sm text-slate-500 mt-2">Fill the online form.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm text-center hover:shadow-md transition">
+                    <div class="w-20 h-20 bg-brand text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-6 border-8 border-white shadow-lg font-sans">2</div>
+                    <h4 class="font-bold text-slate-800 text-lg font-sans">Interaction</h4>
+                    <p class="text-sm text-slate-500 mt-2">Meet the Educators.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm text-center hover:shadow-md transition">
+                    <div class="w-20 h-20 bg-brand text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-6 border-8 border-white shadow-lg font-sans">3</div>
+                    <h4 class="font-bold text-slate-800 text-lg font-sans">Docs</h4>
+                    <p class="text-sm text-slate-500 mt-2">Submit TC & Birth Cert.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm text-center hover:shadow-md transition">
+                    <div class="w-20 h-20 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-6 border-8 border-white shadow-lg font-sans"><i class="fas fa-check"></i></div>
+                    <h4 class="font-bold text-slate-800 text-lg font-sans">Welcome</h4>
+                    <p class="text-sm text-slate-500 mt-2">Secure your seat.</p>
+                </div>
+            </div>
+
+            <div class="mt-24 bg-brand rounded-3xl p-10 md:p-16 text-center text-white relative overflow-hidden shadow-2xl mx-2 md:mx-0">
+                <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-4 leading-tight font-sans">Secure Your Child's Future Today</h2>
+                    <p class="text-white/80 mb-10 max-w-xl mx-auto text-lg">Limited seats available for the Founding Batch (2026-27). Apply early to avail special benefits.</p>
+                    <a href="#home" class="bg-gold text-brand-dark px-10 py-4 rounded-full font-bold shadow-lg hover:bg-white transition inline-block text-sm uppercase tracking-widest transform hover:scale-105 duration-300 font-sans">
+                        Start Application
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-slate-850 text-slate-300 pt-20 pb-10 border-t border-brand font-sans">
+        <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12 mb-16">
+            <div>
+                <h2 class="text-2xl font-bold text-white mb-6 tracking-tight">SUNRISE</h2>
+                <p class="text-sm text-slate-400 mb-6 leading-relaxed">Creating global citizens who are future-ready, compassionate, and innovative.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-slate-700 flex items-center justify-center rounded-full hover:bg-brand hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 bg-slate-700 flex items-center justify-center rounded-full hover:bg-brand hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-white font-bold uppercase tracking-widest mb-6 text-xs">Quick Links</h3>
+                <ul class="space-y-4 text-sm text-slate-400">
+                    <li><a href="#admissions" class="hover:text-brand transition">Admissions Process</a></li>
+                    <li><a href="#academics" class="hover:text-brand transition">Curriculum Overview</a></li>
+                    <li><a href="#" onclick="handlePayment()" class="hover:text-brand transition text-gold">Pay Fees Online</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-white font-bold uppercase tracking-widest mb-6 text-xs">Contact Us</h3>
+                <ul class="space-y-4 text-sm text-slate-400">
+                    <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1 text-gold"></i><span>Hitech City,Madhapur <br>Hyderabad - 500081</span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-phone text-gold"></i><span>949-251-1100</span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-envelope text-gold"></i><span>prakashinda@gmail.com</span></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-white font-bold uppercase tracking-widest mb-6 text-xs">Stay Updated</h3>
+                <div class="flex">
+                    <input type="text" placeholder="Your Email" class="bg-slate-700 border-none p-3 rounded-l-lg text-sm w-full focus:ring-1 focus:ring-brand text-white">
+                    <button class="bg-brand text-white px-5 rounded-r-lg font-bold hover:bg-red-700 transition">GO</button>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-6 pt-8 border-t border-slate-700 text-center text-xs text-slate-500">
+            <p>&copy; 2025 Sunrise Global School. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919492511100?text=Hello%20Sunrise%20Global%20School,%20I%20have%20an%20enquiry." 
+       class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-600 hover:-translate-y-1 transition duration-300 z-50">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <script>
+        // Toggle Mobile Menu
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+        // CAROUSEL LOGIC
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            let next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+        
+        slideInterval = setInterval(nextSlide, 5000);
+
+        // Payment Logic
+        function handlePayment() {
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            const upiLink = "upi://pay?pa=pkrathore@kotak&pn=Sunrise_Global_School&cu=INR";
+            if (isMobile) {
+                window.location.href = upiLink;
+            } else {
+                alert("Please open this website on your mobile phone to pay using UPI Apps.\n\nOr send payment to: pkrathore@kotak");
+            }
+        }
+    </script>
+
+</body>
+</html>
