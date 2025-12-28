@@ -2,7 +2,11 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta name="theme-color" content="#AE1C40">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <title>Sunrise Global School | Jodhpur's Premier International Institution</title>
     <meta name="description" content="Admissions Open 2026-27. Sunrise Global School Jodhpur blends academic rigour with emotional intelligence on a 10-acre secure campus. Led by experts in Education & Psychology.">
@@ -211,6 +215,47 @@
                 font-size: 1rem;
                 width: 100%;
                 margin-bottom: 0.5rem;
+                min-height: 44px; /* Minimum touch target size */
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            /* Sticky Mobile CTA Bar */
+            .mobile-cta-bar {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: white;
+                box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+                z-index: 1000;
+                padding: 8px;
+                gap: 8px;
+            }
+            
+            .mobile-cta-bar a {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+                border-radius: 8px;
+                font-weight: 600;
+                font-size: 0.85rem;
+                text-align: center;
+                min-height: 44px;
+            }
+            
+            .mobile-cta-bar .cta-primary {
+                background: #AE1C40;
+                color: white;
+            }
+            
+            .mobile-cta-bar .cta-secondary {
+                background: #F3F4F6;
+                color: #1F2937;
             }
             
             /* Spacing adjustments */
@@ -316,7 +361,6 @@
                 <a href="#academics" class="hover:text-brand transition">Academics</a>
                 <a href="#boarding" class="hover:text-brand transition">Boarding</a>
                 <a href="#admissions" class="hover:text-brand transition">Admissions</a>
-                <a href="#admissions" class="bg-brand text-white px-8 py-3 rounded-full hover:bg-brand-dark hover:-translate-y-0.5 transition shadow-glow">Enquire</a>
             </div>
 
             <button id="mobile-menu-btn" class="md:hidden text-2xl text-brand focus:outline-none p-2" aria-controls="mobile-menu" aria-expanded="false">
@@ -488,7 +532,7 @@
         <div class="container mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-20">
                 <h4 class="text-gold-text font-bold uppercase tracking-widest text-xs mb-3 font-sans">Our Core Philosophy</h4>
-                <h2 class="text-4xl font-bold text-slate-900 mb-6 font-sans">Rooted in Values, Rising with Vision.</h2>
+                <h2 class="text-4xl font-bold text-slate-900 mb-6 font-sans">Building Character, Unlocking Potential</h2>
                 <div class="w-20 h-1.5 bg-brand mx-auto rounded-full"></div>
             </div>
             
@@ -514,7 +558,7 @@
                 <div class="md:col-span-7 prose prose-lg text-slate-600">
                     <h3 class="text-3xl font-bold text-slate-900 mb-6 font-sans">A Promise from the Principal</h3>
                     
-                    <p class="text-gold-text font-serif italic text-xl mb-8 border-l-4 border-gold pl-4">
+                    <p class="text-gold-text font-serif italic text-xl mb-8 border-l-4 border-gold pl-6">
                         "Nurturing Minds, Building Character, Shaping Futures"
                     </p>
                     
@@ -524,15 +568,19 @@
                     <p class="mb-6 leading-loose font-light">
                         With my background in <span class="text-brand font-bold">Psychology and Education</span>, I believe that a child’s emotional stability is the engine of their academic success. At Sunrise, we do not just teach subjects; we teach students.
                     </p>
-                    <p class="mb-8 leading-loose font-light">
+                    <p class="mb-6 leading-loose font-light">
                         We blend the rigour of <strong class="text-slate-900">Critical Thinking & Innovation</strong> with the warmth of a supportive family. Supported by our <strong class="text-brand">24/7 Nursing Officer</strong> and expert mentors, your child is in the safest hands in Jodhpur.
                     </p>
                     
-                    <div class="flex items-center gap-5 pt-6 border-t border-gray-100">
-                        <div class="w-12 h-12 bg-brand text-white rounded-full flex items-center justify-center font-serif font-bold text-xl shadow-md">P</div>
+                    <p class="mb-10 leading-loose font-light italic text-brand-dark text-lg">
+                        Join us at Sunrise Global School to meet our educators and discover how we're redefining education in Balesar Jodhpur.
+                    </p>
+                    
+                    <div class="flex items-center gap-5 pt-8 border-t border-gray-100 mt-2">
+                        <div class="w-14 h-14 bg-brand text-white rounded-full flex items-center justify-center font-serif font-bold text-2xl shadow-md flex-shrink-0">P</div>
                         <div>
-                            <p class="font-bold text-slate-900 text-lg font-serif">Prakash Kanwar Inda</p>
-                            <p class="text-xs text-brand font-bold uppercase tracking-widest font-sans">Principal | M.A. English, Education, Psychology</p>
+                            <p class="font-bold text-slate-900 text-xl font-serif">Prakash Kanwar Inda</p>
+                            <p class="text-xs text-brand font-bold uppercase tracking-widest font-sans mt-1">Principal | M.A. English, Education, Psychology</p>
                         </div>
                     </div>
                 </div>
@@ -860,5 +908,12 @@
         window.addEventListener('hashchange', updateNavActive);
     </script>
 
+    <!-- Mobile Sticky CTA Bar -->
+    <div class="md:hidden mobile-cta-bar">
+        <a href="tel:9492511100" class="cta-primary">
+            <i class="fas fa-phone-alt mr-2"></i> Call Now 949-251-1100
+        </a>
+     
+    </div>
 </body>
 </html>
