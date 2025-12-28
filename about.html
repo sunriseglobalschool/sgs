@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About — Sunrise Global School</title>
+  <meta name="description" content="About Sunrise Global School: mission, vision, principal's message, values and facilities on our 10-acre campus in Jodhpur.">
+  <meta property="og:title" content="About — Sunrise Global School">
+  <meta property="og:description" content="Learn about Sunrise Global School: our mission, vision, principal's message, values and campus facilities in Jodhpur.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="/about.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="/index.html" class="flex items-center gap-3">
+        <div class="bg-brand text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl">S</div>
+        <div class="flex flex-col">
+          <span class="text-lg font-extrabold text-brand">SUNRISE</span>
+          <span class="text-[10px] text-slate-400 uppercase">Global School</span>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center space-x-6 font-semibold text-sm uppercase">
+        <a href="/index.html#about" class="hover:text-brand">About</a>
+        <a href="/index.html#academics" class="hover:text-brand">Academics</a>
+        <a href="/admissions.html" class="hover:text-brand">Admissions</a>
+        <a href="/index.html#contact" class="bg-brand text-white px-4 py-2 rounded">Enquire</a>
+      </div>
+      <button class="md:hidden text-2xl text-brand" aria-label="Toggle navigation">☰</button>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-6 py-20">
+    <header class="max-w-3xl mx-auto text-center mb-12">
+      <h1 class="text-3xl md:text-4xl font-extrabold">About Sunrise Global School</h1>
+      <p class="muted mt-3">A 10‑acre campus in Jodhpur delivering character-led, future-ready education.</p>
+    </header>
+
+    <section class="max-w-4xl mx-auto space-y-8">
+      <h2 class="text-2xl font-bold">A Promise from the Principal</h2>
+      <p class="text-lg text-slate-700">"At Sunrise, we teach students — not just subjects. Safety, emotional health, and curious minds come first. Our approach blends rigorous academic foundations with psychological wellbeing to help every child flourish."</p>
+
+      <h2 class="text-2xl font-bold">Our Mission</h2>
+      <p class="text-slate-700">To cultivate character, curiosity and critical thinking so each child thrives in a rapidly changing world. We provide personalised attention, modern facilities, and a values-driven curriculum.</p>
+
+      <h2 class="text-2xl font-bold">Our Vision</h2>
+      <p class="text-slate-700">Ethical leaders who are globally competent, technologically adept, and deeply rooted in humility and compassion.</p>
+
+      <h2 class="text-2xl font-bold">Core Values</h2>
+      <ul class="list-disc pl-6 text-slate-700">
+        <li>Compassion & empathy</li>
+        <li>Curiosity & creativity</li>
+        <li>Integrity & responsibility</li>
+        <li>Resilience & wellbeing</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold">Facilities & Safeguards</h2>
+      <p class="text-slate-700">Our secure 10‑acre campus features modern dormitories, STEM & robotics labs, a 24/7 medical officer, GPS-enabled transport, and nutritious vegetarian meals prepared under strict hygiene standards.</p>
+
+      <div class="bg-white p-6 rounded-2xl shadow-soft">
+        <h3 class="font-bold">Visit Us</h3>
+        <p class="muted">We welcome parents to schedule a campus tour and meet our educators. Limited slots available for the Founding Batch (2026‑27).</p>
+        <div class="mt-4">
+          <a href="/index.html#admissions" class="btn btn-primary">Apply Now</a>
+          <a href="/index.html#contact" class="btn btn-secondary ml-3">Schedule a Visit</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-slate-850 text-slate-300 pt-12 pb-8">
+    <div class="container mx-auto px-6 text-sm">
+      <div class="flex justify-between items-center">
+        <div>
+          <h3 class="text-white font-bold">SUNRISE</h3>
+          <p class="muted">Creating global citizens who are future-ready.</p>
+        </div>
+        <div class="muted">&copy; 2025 Sunrise Global School</div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    (function(){
+      const path = location.pathname.replace(/\/$/,'');
+      document.querySelectorAll('nav a').forEach(a=>{
+        try{ const href = new URL(a.href).pathname.replace(/\/$/,''); if(href === path) a.classList.add('nav-active'); }catch(e){}
+      });
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      if(btn && menu){ btn.addEventListener('click', ()=>{ const expanded = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', String(!expanded)); menu.classList.toggle('hidden'); }); }
+    })();
+  </script>
+</body>
+</html>
